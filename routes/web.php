@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('home');
+})->name('home');
+
+Route::get('contact', function () {
+    return view('contact');
+})->name('contact');
+
+Route::get('login', 'App\Http\Controllers\LoginController@index')->name('login');
+Route::post('login/login', 'App\Http\Controllers\LoginController@login')->name('login_action');
+
+Route::get('/tickets', 'App\Http\Controllers\TicketController@index')->name('tickets');
