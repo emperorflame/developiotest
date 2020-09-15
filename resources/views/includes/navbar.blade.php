@@ -11,8 +11,7 @@
           </div>
           <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-              <li><a href="/">Home</a></li>
-              <li><a href="/contact">Support</a></li>
+              <li><a href="/">Support</a></li>
                 @if(Auth::check())
                     <li><a href="/tickets">Tickets</a></li>
                     <li><a href="/logout">Logout</a></li>

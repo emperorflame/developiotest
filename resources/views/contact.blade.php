@@ -3,26 +3,26 @@
 @section('content')
     <h1>Support</h1>
 
-    <form method="post" action="contact/submit">
+    <form method="post" action="tickets/add">
         @csrf
         <div class="form-group">
-            <label for="contact_name">Name*:</label>
-            <input id="contact_name" class="form-control" name="contact_name" type="text" required>
+            <label for="ticket_name">Name*:</label>
+            <input id="ticket_name" class="form-control" name="ticket_name" type="text" required>
         </div>
 
         <div class="form-group">
-            <label for="contact_subject">Subject*:</label>
-            <input id="contact_subject" class="form-control" name="contact_subject" type="text" required>
+            <label for="ticket_subject">Subject*:</label>
+            <input id="ticket_subject" class="form-control" name="ticket_subject" type="text" required>
         </div>
 
         <div class="form-group">
-            <label for="contact_email">E-mail*:</label>
-            <input id="contact_email" class="form-control" name="contact_email" type="email" required>
+            <label for="ticket_email">E-mail*:</label>
+            <input id="ticket_email" class="form-control" name="ticket_email" type="email" required>
         </div>
 
         <div class="form-group">
-            <label for="contact_message">Message*:</label>
-            <textarea id="contact_message" class="form-control" name="contact_message" required></textarea>
+            <label for="ticket_message">Message*:</label>
+            <textarea id="ticket_message" class="form-control" name="ticket_message" required></textarea>
         </div>
 
         <div class="form-group">

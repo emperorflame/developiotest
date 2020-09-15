@@ -22,25 +22,25 @@ class LoginController extends BaseController
     public function login(Request $request)
     {
         $request->validate([
-            'login_email' => 'required|email',
+            'login_email'    => 'required|email',
             'login_password' => 'required|alphaNum|min:3'
         ]);
 
         $userData = [
-            'email' => $request->get('login_email'),
+            'email'    => $request->get('login_email'),
             'password' => $request->get('login_password')
         ];
 
-        if(Auth::attempt($userData)){
+        if (Auth::attempt($userData)) {
             return redirect('tickets');
-        }else{
-            return back()->withErrors('Hibás felhasználónév vagy jelszó!');
         }
 
+        return back()->withErrors(__('auth.failed'));
     }
 
-    public function logout ()
+    public function logout()
     {
         Auth::logout();
+        return back();
     }
 }

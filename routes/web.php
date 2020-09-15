@@ -15,14 +15,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('contact');
 })->name('home');
 
-Route::get('contact', function () {
-    return view('contact');
-})->name('contact');
-
 Route::get('login', 'App\Http\Controllers\LoginController@index')->name('login');
+
 Route::post('login/login', 'App\Http\Controllers\LoginController@login')->name('login_action');
 
-Route::get('/tickets', 'App\Http\Controllers\TicketController@index')->name('tickets');
+Route::get('logout', 'App\Http\Controllers\LoginController@logout')->name('logout');
+
+Route::get('/tickets', 'App\Http\Controllers\TicketController@index')->middleware('auth')->name('tickets');
+Route::post('/tickets/add', 'App\Http\Controllers\TicketController@add')->name('tickets_add');
