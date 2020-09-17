@@ -26,3 +26,5 @@ Route::get('logout', 'App\Http\Controllers\LoginController@logout')->name('logou
 
 Route::get('/tickets', 'App\Http\Controllers\TicketController@index')->middleware('auth')->name('tickets');
 Route::post('/tickets/add', 'App\Http\Controllers\TicketController@add')->name('tickets_add');
+
+Route::get('/customers', 'App\Http\Controllers\CustomerController@index')->middleware('auth')->name('tickets');

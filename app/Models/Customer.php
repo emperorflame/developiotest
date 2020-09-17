@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Customer extends Model
 {
     use HasFactory;
+    protected $table = 'customers';
 
     /**
      * The attributes that are mass assignable.
@@ -25,6 +26,11 @@ class Customer extends Model
         if($customer) return $customer->id;
 
         return null;
+    }
+
+    public function tickets ()
+    {
+        return $this->belongsTo('App\Models\Ticket');
     }
 
 }

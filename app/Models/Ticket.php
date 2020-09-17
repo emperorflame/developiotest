@@ -9,6 +9,7 @@ use DateTime;
 class Ticket extends Model
 {
     use HasFactory;
+    protected $table = 'tickets';
 
     /**
      * The attributes that are mass assignable.
@@ -98,6 +99,11 @@ class Ticket extends Model
 
         if($dueDate) return $dueDate;
         return false;
+    }
+
+    public function customer ()
+    {
+        return $this->belongsTo('App\Models\Customer');
     }
 
 }

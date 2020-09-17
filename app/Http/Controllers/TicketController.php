@@ -13,7 +13,15 @@ class TicketController extends BaseController
 
     public function index(Request $request)
     {
-        return view('tickets');
+        $tickets = $this->getTickets($request);
+        return view('tickets',[
+            'tickets' => $tickets
+        ]);
+    }
+
+    public function getTickets (Request $request)
+    {
+        return Ticket::with('customer')->orderBy('due_date')->get()->toArray();
     }
 
     public function add(Request $request)

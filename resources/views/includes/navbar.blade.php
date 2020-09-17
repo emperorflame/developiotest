@@ -14,6 +14,7 @@
               <li><a href="/">Support</a></li>
                 @if(Auth::check())
                     <li><a href="/tickets">Tickets</a></li>
+                    <li><a href="/customers">Customers</a></li>
                     <li><a href="/logout">Logout</a></li>
                 @else
                     <li><a href="/login">Login</a></li>
