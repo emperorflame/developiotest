@@ -32,28 +32,30 @@ class TicketController extends BaseController
 
         $customerId = Customer::isCustomerExist($request->get('ticket_email'));
 
-        if (!$customerId){
+        if (!$customerId) {
             try {
                 $customerModel = new Customer($customerData);
                 $customerModel->save();
                 $customerId = $customerModel->id;
-            } catch (\Exception $e){
-                if(empty($customerId)) Log::error('Cannot save customer - ' . $e);
+            } catch (\Exception $e) {
+                if (empty($customerId)) Log::error('Cannot save customer - ' . $e);
                 return back()->withErrors(__('validation.default_error'));
             }
         }
 
         if (!is_null($customerId)) {
+            $dueDate = Ticket::calculateDueDate();
             $ticketData = [
                 'customer_id' => $customerId,
                 'subject'     => $request->get('ticket_subject'),
                 'message'     => $request->get('ticket_message'),
+                'due_date'    => $dueDate,
             ];
 
             try {
                 $ticketModel = new Ticket($ticketData);
                 $ticketModel->save();
-            } catch (\Exception $e){
+            } catch (\Exception $e) {
                 Log::error("Cannot save ticket, customerId: $customerId - " . $e);
                 return back()->withErrors(__('validation.default_error'));
             }
